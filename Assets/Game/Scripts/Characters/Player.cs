@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using DesingPrinciplesDemo.Gameplay.Character.Movement;
+using DesignPrinciplesDemo.Gameplay.Character.Movement;
 
-namespace DesingPrinciplesDemo.Gameplay.Character {
+namespace DesignPrinciplesDemo.Gameplay.Character {
 
   public class Player : BaseCharacter {
 

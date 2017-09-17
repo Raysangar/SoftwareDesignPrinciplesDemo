@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using DesingPrinciplesDemo.Gameplay.Character.Movement;
+using DesignPrinciplesDemo.Gameplay.Character.Movement;
 
-namespace DesingPrinciplesDemo.Gameplay.Character.Appearence {
+namespace DesignPrinciplesDemo.Gameplay.Character.Appearence {
 
   public abstract class AppearenceComponent : MonoBehaviour {
 

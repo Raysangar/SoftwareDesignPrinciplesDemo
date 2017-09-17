@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-using DesingPrinciplesDemo.Gameplay.Character.Movement;
-using DesingPrinciplesDemo.Gameplay.Character.Appearence;
+using DesignPrinciplesDemo.Gameplay.Character.Movement;
+using DesignPrinciplesDemo.Gameplay.Character.Appearence;
 
-namespace DesingPrinciplesDemo.Gameplay.Character {
+namespace DesignPrinciplesDemo.Gameplay.Character {
   [RequireComponent(typeof(MovementComponent))]
   public abstract class BaseCharacter : MonoBehaviour {
 
