@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DesingPrinciplesDemo.Character.Movement {
+namespace DesingPrinciplesDemo.Gameplay.Character.Movement {
   public class MovementDirection {
     public static readonly MovementDirection Left = new MovementDirection (Vector3.left);
     public static readonly MovementDirection Right = new MovementDirection (Vector3.right);

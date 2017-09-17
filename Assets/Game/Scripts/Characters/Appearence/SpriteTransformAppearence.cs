@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using DesingPrinciplesDemo.Character.Movement;
+using DesingPrinciplesDemo.Gameplay.Character.Movement;
 
-namespace DesingPrinciplesDemo.Character.Appearence {
+namespace DesingPrinciplesDemo.Gameplay.Character.Appearence {
 
   public class SpriteTransformAppearence : AppearenceComponent {
 

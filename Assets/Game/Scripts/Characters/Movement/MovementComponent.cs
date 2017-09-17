@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DesingPrinciplesDemo.Character.Movement {
+namespace DesingPrinciplesDemo.Gameplay.Character.Movement {
 
   public class MovementComponent : MonoBehaviour {
 
