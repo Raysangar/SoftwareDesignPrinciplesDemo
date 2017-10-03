@@ -4,6 +4,6 @@ using UnityEngine;
 
 namespace DesignPrinciplesDemo.Gameplay.Level {
   public interface IObstacleFactory {
-    GameObject GetObstacleOfType (ObstacleType type);
+    GameObject GetObstacleOfType (TileType type);
   }
 }

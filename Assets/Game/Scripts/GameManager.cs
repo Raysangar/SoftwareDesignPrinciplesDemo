@@ -7,7 +7,7 @@ namespace DesignPrinciplesDemo.Gameplay {
   public class GameManager : MonoBehaviour {
 
     private void Awake() {
-      ObstacleType[,] boardObstacles = new ObstacleType[boardInfo.Length, boardInfo[0].Obstacles.Length];
+      TileType[,] boardObstacles = new TileType[boardInfo.Length, boardInfo[0].Obstacles.Length];
 
       for (int y = 0; y < boardObstacles.GetLength (0); ++y) {
         for (int x = 0; x < boardObstacles.GetLength (1); ++x) {
@@ -15,12 +15,15 @@ namespace DesignPrinciplesDemo.Gameplay {
         }
       }
 
-      board = new Board (boardObstacles, obstacleFactory);
-      player = Player.Instantiate (playerPrefab, Vector3.zero, Quaternion.identity);
+      board = new Board (boardObstacles, obstacleFactory, tileSize);
+      player = Player.Instantiate (playerPrefab, board.GetRandomEmptyTilePosition(), Quaternion.identity);
     }
 
     [SerializeField]
     private Player playerPrefab;
+
+    [SerializeField]
+    private float tileSize;
 
     [SerializeField]
     private MatrixBoardHelper[] boardInfo;
@@ -28,9 +31,10 @@ namespace DesignPrinciplesDemo.Gameplay {
     [SerializeField]
     private ObstacleFactory obstacleFactory;
 
+
     [System.Serializable]
     private class MatrixBoardHelper {
-      public ObstacleType[] Obstacles;
+      public TileType[] Obstacles;
     }
 
     private Board board;

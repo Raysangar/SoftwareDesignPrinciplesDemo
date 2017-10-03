@@ -202,25 +202,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 114693650945419822, guid: d17732a55c3d11c4da045ebaeaba280c,
     type: 2}
+  tileSize: 0.4
   boardInfo:
-  - Obstacles: 05000000000000000000000004000000
+  - Obstacles: 01000000010000000100000001000000
   - Obstacles: 01000000000000000000000001000000
   - Obstacles: 01000000000000000000000001000000
-  - Obstacles: 02000000000000000000000003000000
+  - Obstacles: 01000000010000000100000001000000
   obstacleFactory:
     obstacles:
     - Type: 0
-      Prefab: {fileID: 1958875110830738, guid: 98eb50920492a1b489a1cdec7305fb9a, type: 2}
+      Prefab: {fileID: 1594666379234760, guid: 362c8f01e7de8284e9871db78e48fd48, type: 2}
     - Type: 1
-      Prefab: {fileID: 1431356301056238, guid: 741ce439a8706c64296738493353db41, type: 2}
-    - Type: 2
-      Prefab: {fileID: 1787682224530000, guid: 2f3f69f8c37c23044ba75efc20c091a6, type: 2}
-    - Type: 3
-      Prefab: {fileID: 1214023556574380, guid: 8f3c6b5de04f9eb468f048da68776233, type: 2}
-    - Type: 4
-      Prefab: {fileID: 1636859937653638, guid: 54228d174e657bd46a0fb953a89f3bd1, type: 2}
-    - Type: 5
-      Prefab: {fileID: 1343311294842394, guid: a42681d3de0d08945816c2cce508239a, type: 2}
+      Prefab: {fileID: 1546890224238312, guid: 60d5a04c1c81a4e41ba993b569d799fe, type: 2}
 --- !u!4 &1558498813
 Transform:
   m_ObjectHideFlags: 0
