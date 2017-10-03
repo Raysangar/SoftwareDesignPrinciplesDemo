@@ -5,6 +5,12 @@ namespace DesignPrinciplesDemo.Gameplay.Character.Movement {
 
   public class MovementComponent : MonoBehaviour {
 
+    public bool Stopped {
+      get {
+        return enabled;
+      }
+    }
+
     public void Init (Board board) {
       this.board = board;
     }

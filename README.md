@@ -20,9 +20,15 @@ The board uses a Factory to get the elements that make it up. The factory es cre
 Characters now can move over the board. 
 The movement component needs the board to know where the obstacles are, so we use the Dependendency Injection Pattern to mantain the component decoupled from the rest of the architecture.
 
-** Example 4**
+**Example 4**
 
 Implemented collision detection on player as new component (Single Responsability Principle).
 We create a Coin item that inherits from a base colliding class (Open/Closed Principle)
 The player interacts with any colliding element that hits through an interface (Dependency Inversion Principle)
 Implemented simple HUD. UI and Gameplay decoupled using o variation of the Observer Pattern.
+
+**Example 5**
+
+Enemies implementation. All enemies inherits from a base enemy class (Liskov & OCP).
+Player interacts with enemies as CollidingElements (Dependency Inversion Principle).
+Player refactored to extract Input to another class (SRP, Liskov & OCP). 

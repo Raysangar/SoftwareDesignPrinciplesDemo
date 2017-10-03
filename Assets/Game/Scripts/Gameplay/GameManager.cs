@@ -1,12 +1,20 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 using DesignPrinciplesDemo.Gameplay.Level;
 using DesignPrinciplesDemo.Gameplay.Character;
+using DesignPrinciplesDemo.Gameplay.Character.Enemies;
 
 namespace DesignPrinciplesDemo.Gameplay {
 
   public class GameManager : MonoBehaviour {
 
     public System.Action<int> OnScoreUpdated = delegate{ };
+    public System.Action OnGameOver = delegate{ };
+
+    public Player Player {
+      get;
+      private set;
+    }
 
     public void AddScore(int score) {
       this.score += score;
@@ -24,14 +32,31 @@ namespace DesignPrinciplesDemo.Gameplay {
 
       board = new Board (boardObstacles, tileFactory, tileSize);
 
-      player = Player.Instantiate (playerPrefab, board.GetRandomEmptyTilePosition(), Quaternion.identity);
-      player.Init (board);
+      Player = Player.Instantiate (playerPrefab, board.GetRandomEmptyTilePosition(), Quaternion.identity);
+      Player.Init (board);
+      Player.OnDeath += OnPlayerDeath;
+
+      enemies = new List<BaseEnemy> ();
+      for (int i = 0; i < enemiesCount; ++i) {
+        enemies.Add (BaseEnemy.Instantiate (enemyPrefab, board.GetRandomEmptyTilePosition (), Quaternion.identity));
+        enemies[i].InitEnemy (this, board);
+      }
 
       score = 0;
     }
 
+    private void OnPlayerDeath() {
+      OnGameOver ();
+    }
+
     [SerializeField]
     private Player playerPrefab;
+
+    [SerializeField]
+    private BaseEnemy enemyPrefab;
+
+    [SerializeField]
+    private int enemiesCount;
 
     [SerializeField]
     private float tileSize;
@@ -49,7 +74,7 @@ namespace DesignPrinciplesDemo.Gameplay {
     }
 
     private Board board;
-    private Player player;
     private int score;
+    private List<BaseEnemy> enemies;
   }
 }

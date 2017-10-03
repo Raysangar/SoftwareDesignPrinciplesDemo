@@ -3,7 +3,7 @@
 namespace DesignPrinciplesDemo {
   public class ManagersDependencyController : MonoBehaviour {
     private void Awake () {
-      hudManager.Init (ref gameManager.OnScoreUpdated);
+      hudManager.Init (ref gameManager.OnScoreUpdated, ref gameManager.OnGameOver);
     }
 
     [SerializeField]

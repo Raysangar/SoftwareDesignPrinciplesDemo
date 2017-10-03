@@ -1,33 +1,22 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
-using DesignPrinciplesDemo.Gameplay.Level;
+﻿using DesignPrinciplesDemo.Gameplay.Input;
 using DesignPrinciplesDemo.Gameplay.Character.Movement;
+using DesignPrinciplesDemo.Gameplay.Level;
 
 namespace DesignPrinciplesDemo.Gameplay.Character {
 
   public class Player : BaseCharacter {
 
-    private void Update () {
-      foreach (KeyValuePair<string, MovementDirection> pair in DirectionForButtons) {
-        if (Input.GetButtonDown(pair.Key)) {
-          MoveTo (pair.Value);
-          return;
-        }
-      }
+    public override void Init (Board board) {
+      base.Init (board);
+      GetComponent<IInputController> ().OnInputDetected += OnPlayerInput;
     }
 
-    private const string LeftButtonName = "left";
-    private const string RightButtonName = "right";
-    private const string UpButtonName = "up";
-    private const string DownButtonName = "down";
+    public void EnemyHit (BaseCharacter enemy) {
+      Die ();
+    }
 
-    private static readonly Dictionary<string, MovementDirection> DirectionForButtons = new Dictionary<string, MovementDirection> () {
-      {LeftButtonName, MovementDirection.Left },
-      {RightButtonName, MovementDirection.Right },
-      {UpButtonName, MovementDirection.Up },
-      {DownButtonName, MovementDirection.Down }
-    };
-
-    private Board board;
+    private void OnPlayerInput(MovementDirection direction) {
+      MoveTo (direction);
+    }
   }
 }
