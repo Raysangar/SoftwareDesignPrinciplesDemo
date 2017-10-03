@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using DesignPrinciplesDemo.Gameplay.Level;
 using DesignPrinciplesDemo.Gameplay.Character.Movement;
 using DesignPrinciplesDemo.Gameplay.Character.Appearence;
 
@@ -6,9 +7,10 @@ namespace DesignPrinciplesDemo.Gameplay.Character {
   [RequireComponent(typeof(MovementComponent))]
   public abstract class BaseCharacter : MonoBehaviour {
 
-    protected virtual void Awake () {
+    public virtual void Init(Board board) {
       movement = GetComponent<MovementComponent> ();
       appearence = GetComponent<AppearenceComponent> ();
+      movement.Init (board);
     }
 
     protected void MoveTo (MovementDirection direction) {

@@ -9,25 +9,28 @@ namespace DesignPrinciplesDemo.Gameplay.Character.Movement {
     public static readonly MovementDirection None = new MovementDirection (Vector3.zero);
 
     public static Vector3 operator + (MovementDirection direction, Vector3 position) {
-      return direction.direction + position;
+      return direction.Vector + position;
     }
 
     public static Vector3 operator - (MovementDirection direction, Vector3 position) {
-      return direction.direction - position;
+      return direction.Vector - position;
     }
 
     public static Vector3 operator * (MovementDirection direction, float scalar) {
-      return direction.direction * scalar;
+      return direction.Vector * scalar;
     }
 
     public static Vector3 operator / (MovementDirection direction, float scalar) {
-      return direction.direction / scalar;
+      return direction.Vector / scalar;
+    }
+
+    public Vector3 Vector {
+      get;
+      private set;
     }
 
     private MovementDirection (Vector3 direction) {
-      this.direction = direction;
+      Vector = direction;
     }
-
-    private Vector3 direction;
   }
 }

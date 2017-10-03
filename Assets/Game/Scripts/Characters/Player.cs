@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using DesignPrinciplesDemo.Gameplay.Level;
 using DesignPrinciplesDemo.Gameplay.Character.Movement;
 
 namespace DesignPrinciplesDemo.Gameplay.Character {
@@ -26,5 +27,7 @@ namespace DesignPrinciplesDemo.Gameplay.Character {
       {UpButtonName, MovementDirection.Up },
       {DownButtonName, MovementDirection.Down }
     };
+
+    private Board board;
   }
 }

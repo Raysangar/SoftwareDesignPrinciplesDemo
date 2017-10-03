@@ -17,6 +17,7 @@ namespace DesignPrinciplesDemo.Gameplay {
 
       board = new Board (boardObstacles, obstacleFactory, tileSize);
       player = Player.Instantiate (playerPrefab, board.GetRandomEmptyTilePosition(), Quaternion.identity);
+      player.Init (board);
     }
 
     [SerializeField]

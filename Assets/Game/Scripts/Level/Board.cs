@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
+using DesignPrinciplesDemo.Utils.CustomExtensions;
+using DesignPrinciplesDemo.Gameplay.Character.Movement;
 
 namespace DesignPrinciplesDemo.Gameplay.Level {
   public class Board {
 
     public Board (TileType[,] boardInfo, ObstacleFactory obstacleFactory, float tileSize) {
+      this.tileSize = tileSize;
+
       board = new Tile[boardInfo.GetLength(0), boardInfo.GetLength(1)];
 
       for (int y = 0; y < boardInfo.GetLength(0); ++y) {
@@ -17,15 +21,45 @@ namespace DesignPrinciplesDemo.Gameplay.Level {
 
     public Vector3 GetRandomEmptyTilePosition()
     {
-      int x, y;
+      Tile tile;
       do {
-        x = Random.Range (0, board.GetLength (1));
-        y = Random.Range (0, board.GetLength (0));
+        tile = board.GetRandomElement ();
       }
-      while (board[x, y].Type != TileType.None);
-      return board[x, y].GameObject.transform.position;
+      while (tile.Type != TileType.None);
+
+      return tile.GameObject.transform.position;
+    }
+
+    public Vector3 GetFarthestCirculablePositionFrom (Vector3 position, Vector2 direction) {
+      Vector2 boardPosition = ConvertToBoardPosition (position);
+
+      do {
+        boardPosition += direction;
+      }
+      while (TileAt (boardPosition).Type != TileType.Wall);
+
+      return TileAt(boardPosition - direction).GameObject.transform.position;
+    }
+
+    public Vector3 GetNearestTilePositionTo(Vector3 position) {
+      Vector2 boardPosition = ConvertToBoardPosition (position);
+      return TileAt (boardPosition).GameObject.transform.position;
+    }
+
+    private Tile TileAt(Vector2 boardPosition) {
+      return board[(int) boardPosition.y, (int) boardPosition.x];
+    }
+
+    private Vector2 ConvertToBoardPosition(Vector3 position) {
+      position /= tileSize;
+
+      position.x = Mathf.Round (position.x);
+      position.y = Mathf.Round (position.y);
+
+      return position;
     }
 
     private Tile[,] board;
+    private float tileSize;
   }
 }
