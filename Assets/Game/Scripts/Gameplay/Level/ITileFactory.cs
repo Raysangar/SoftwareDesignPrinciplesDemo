@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace DesignPrinciplesDemo.Gameplay.Level {
-  public interface IObstacleFactory {
+  public interface ITileFactory {
     GameObject GetObstacleOfType (TileType type);
   }
 }

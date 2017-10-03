@@ -6,6 +6,13 @@ namespace DesignPrinciplesDemo.Gameplay {
 
   public class GameManager : MonoBehaviour {
 
+    public System.Action<int> OnScoreUpdated = delegate{ };
+
+    public void AddScore(int score) {
+      this.score += score;
+      OnScoreUpdated (score);
+    }
+
     private void Awake() {
       TileType[,] boardObstacles = new TileType[boardInfo.Length, boardInfo[0].Obstacles.Length];
 
@@ -15,9 +22,12 @@ namespace DesignPrinciplesDemo.Gameplay {
         }
       }
 
-      board = new Board (boardObstacles, obstacleFactory, tileSize);
+      board = new Board (boardObstacles, tileFactory, tileSize);
+
       player = Player.Instantiate (playerPrefab, board.GetRandomEmptyTilePosition(), Quaternion.identity);
       player.Init (board);
+
+      score = 0;
     }
 
     [SerializeField]
@@ -30,7 +40,7 @@ namespace DesignPrinciplesDemo.Gameplay {
     private MatrixBoardHelper[] boardInfo;
 
     [SerializeField]
-    private ObstacleFactory obstacleFactory;
+    private TileFactory tileFactory;
 
 
     [System.Serializable]
@@ -40,5 +50,6 @@ namespace DesignPrinciplesDemo.Gameplay {
 
     private Board board;
     private Player player;
+    private int score;
   }
 }

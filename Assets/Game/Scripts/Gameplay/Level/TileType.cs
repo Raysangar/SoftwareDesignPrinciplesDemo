@@ -2,5 +2,6 @@
   public enum TileType {
     None,
     Wall,
+    Coin
   }
 }

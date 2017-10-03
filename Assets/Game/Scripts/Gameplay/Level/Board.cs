@@ -1,18 +1,17 @@
 ﻿using UnityEngine;
 using DesignPrinciplesDemo.Utils.CustomExtensions;
-using DesignPrinciplesDemo.Gameplay.Character.Movement;
 
 namespace DesignPrinciplesDemo.Gameplay.Level {
   public class Board {
 
-    public Board (TileType[,] boardInfo, ObstacleFactory obstacleFactory, float tileSize) {
+    public Board (TileType[,] boardInfo, TileFactory tileFactory, float tileSize) {
       this.tileSize = tileSize;
 
       board = new Tile[boardInfo.GetLength(0), boardInfo.GetLength(1)];
 
       for (int y = 0; y < boardInfo.GetLength(0); ++y) {
         for (int x = 0; x < boardInfo.GetLength(1); ++x) {
-          GameObject tileObject = obstacleFactory.GetObstacleOfType (boardInfo[y, x]);
+          GameObject tileObject = tileFactory.GetObstacleOfType (boardInfo[y, x]);
           tileObject.transform.position = new Vector3(x * tileSize, y * tileSize, 0);
           board[y, x] = new Tile (boardInfo[y, x], tileObject);
         }
