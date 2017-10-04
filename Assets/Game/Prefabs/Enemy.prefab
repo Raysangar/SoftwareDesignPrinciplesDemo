@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ddeac460e3254e488ff84cebcdc6813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 2
   wallDetectionThreshold: 0.002
 --- !u!114 &114361112286959788
 MonoBehaviour:

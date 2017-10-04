@@ -9,14 +9,26 @@ namespace DesignPrinciplesDemo.Gameplay.Character {
     public override void Init (Board board) {
       base.Init (board);
       GetComponent<IInputController> ().OnInputDetected += OnPlayerInput;
+      invulnerabilityController = GetComponent<InvulnerabilityController> ();
     }
 
     public void EnemyHit (BaseCharacter enemy) {
-      Die ();
+      if (invulnerabilityController.IsInvulnerable) {
+        enemy.Die ();
+      }
+      else {
+        Die ();
+      }
+    }
+
+    public void SetInvulnerabilityFor(float seconds) {
+      invulnerabilityController.SetInvulnarabilityFor (seconds);
     }
 
     private void OnPlayerInput(MovementDirection direction) {
       MoveTo (direction);
     }
+
+    private InvulnerabilityController invulnerabilityController;
   }
 }

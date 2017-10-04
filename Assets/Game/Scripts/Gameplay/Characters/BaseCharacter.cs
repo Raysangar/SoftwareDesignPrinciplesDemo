@@ -7,7 +7,7 @@ namespace DesignPrinciplesDemo.Gameplay.Character {
   [RequireComponent(typeof(MovementComponent))]
   public abstract class BaseCharacter : MonoBehaviour {
 
-    public System.Action OnDeath = delegate { };
+    public System.Action<BaseCharacter> OnDeath = delegate { };
 
     public virtual void Init(Board board) {
       movement = GetComponent<MovementComponent> ();
@@ -16,7 +16,7 @@ namespace DesignPrinciplesDemo.Gameplay.Character {
     }
 
     public virtual void Die () {
-      OnDeath ();
+      OnDeath (this);
       Destroy (gameObject);
     }
 

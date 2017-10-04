@@ -31,4 +31,8 @@ Implemented simple HUD. UI and Gameplay decoupled using o variation of the Obser
 
 Enemies implementation. All enemies inherits from a base enemy class (Liskov & OCP).
 Player interacts with enemies as CollidingElements (Dependency Inversion Principle).
-Player refactored to extract Input to another class (SRP, Liskov & OCP). 
+Player refactored to extract Input to another class (SRP, Liskov & OCP).
+
+**Example 6**
+
+Win condition implemented. Added component to player to check control invulnerability (SRP).
