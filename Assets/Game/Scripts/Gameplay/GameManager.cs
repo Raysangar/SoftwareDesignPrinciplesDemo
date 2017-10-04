@@ -19,7 +19,7 @@ namespace DesignPrinciplesDemo.Gameplay {
 
     public void AddScore (int score) {
       this.score += score;
-      OnScoreUpdated (score);
+      OnScoreUpdated (this.score);
     }
 
     private void Awake () {
